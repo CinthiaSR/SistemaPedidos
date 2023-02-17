@@ -100,9 +100,12 @@
                 <tbody>
                     <?php 
                     $importe = 0;
+                    $ft2xPed=0;
                         if(count($roller) > 0){
                             foreach ($roller as $persiana) {
                                 $importe +=$persiana['shut_totalprecio'];
+                                $ft2xPed +=$persiana['shut_ft2'];
+
                      ?>
                   <tr>
                     <!-- <td>?= $persiana['en_cantidad'] ?></td> -->
@@ -148,7 +151,8 @@
               <input type="hidden" id="id" name="id" value="<?= $precio['id']?>">
                 <tfoot>
                     <tr>
-                        <th colspan="4" class="text-right col-md-10">Importe:</th>
+                        <th  class="text-right col-md-10"> <span class="badge badge-info" style="font-size: 18px ;">Total de Ft2: &nbsp; <?= $ft2xPed?> </span></th>
+                        <th colspan="3" class="text-right col-md-10">Importe:</th>
                         <td class="text-right"><input type="text" id="txtImporte" name="txtImporte" class="monto" onkeyup="calculateTotal();" value=" <?=$importe?>" readonly >
                         </td>
                     </tr>

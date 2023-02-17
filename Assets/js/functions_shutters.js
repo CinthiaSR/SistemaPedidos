@@ -306,7 +306,8 @@ function calculate(){
                 suma2=num2+marco;
                 resultado=(parseFloat(suma1)*parseFloat(suma2))/144; 
                 text1= resultado;
-              } else if(Med=="PDSD-F2F/Z-Std" || Med=="PDSD-F2F/Z-Rd" || Med=="PDSD-F2F/Z-Dlx"|| Med=="PDSD-F2F/Z-Dm"||Med=="PFF2F/L-Std"|| Med=="PFF2F/Eleg"){
+               }
+               else if(Med=="PDSD-F2F/Z-Std" || Med=="PDSD-F2F/Z-Rd" || Med=="PDSD-F2F/Z-Dlx"|| Med=="PDSD-F2F/Z-Dm"||Med=="PFF2F/L-Std"|| Med=="PFF2F/Eleg"){
                   num1=parseFloat(ancho); 
                   num2=parseFloat(alto); 
                   resultado=(parseFloat(num1)*parseFloat(num2))/144; 
@@ -338,9 +339,11 @@ function calculate(){
                     suma2=num2+marco;
                     resultado=(parseFloat(suma1)*parseFloat(suma2))/144; 
                     text1= resultado;
-                  }
+                    
+                }
+                ft2xPed=resultado*unidades
         }
-        $('#Tft2').val(parseFloat(text1));	
+        $('#Tft2').val(parseFloat(ft2xPed));	
 	});
     if(text1) {
         if(isNaN(text1) || isNaN(precioxft2)|| isNaN(unidades)){
