@@ -282,6 +282,8 @@ function fntDelItem(element){
 
 
 function calculate(){
+    const pais= document.querySelector('#Inst_Pais').value;
+    const color =document.querySelector('#color_shutters').value;
     var ancho= document.querySelector('#anc_shutters').value;
     var alto = document.querySelector('#alt_shutters').value;
     var Med = document.querySelector('#Med_shutters').value;
@@ -350,8 +352,64 @@ function calculate(){
             text2+=0;
         }else{
             resultado1=(parseFloat(text1)*parseFloat(precioxft2)); 
-            text2= resultado1; 
-            resultado2=(parseFloat(resultado1)*parseFloat(unidades));
+            if(pais=="USA Instalada"){
+                if (color=="Picolo" || color=="Bolero" || color=="Clarinete"){
+                    text2= resultado1+17.50;                 
+                }
+                if (color=="Natural" || color=="Sugar Maple" || color=="Nogal Clasico"
+                        || color=="Roble" || color=="Cappuccino" || color=="Chocolate" || color=="Dark Mahogany" 
+                        || color=="Coffe"){
+                            text2= resultado1+18.50; 
+                }
+                if(color=="Igualacion"){
+                    text2= resultado1+80; 
+                }
+            }
+
+            if(pais=="USA No instalada"){
+                if (color=="Picolo" || color=="Bolero" || color=="Clarinete"){
+                    text2= resultado1+16;                 
+                }
+                if (color=="Natural" || color=="Sugar Maple" || color=="Nogal Clasico"
+                        || color=="Roble" || color=="Cappuccino" || color=="Chocolate" || color=="Dark Mahogany" 
+                        || color=="Coffe"){
+                            text2= resultado1+17; 
+                }
+                if(color=="Igualacion"){
+                    text2= resultado1+80; 
+                }
+            }
+
+
+            if(pais=="MX Instalada"){
+                if (color=="Picolo" || color=="Bolero" || color=="Clarinete"){
+                    text2= resultado1+16.50;                 
+                }
+                if (color=="Natural" || color=="Sugar Maple" || color=="Nogal Clasico"
+                        || color=="Roble" || color=="Cappuccino" || color=="Chocolate" || color=="Dark Mahogany" 
+                        || color=="Coffe"){
+                            text2= resultado1+17.50; 
+                }
+                if(color=="Igualacion"){
+                    text2= resultado1+50; 
+                }
+            }
+
+            if(pais=="MX No instalada"){
+                if (color=="Picolo" || color=="Bolero" || color=="Clarinete"){
+                    text2= resultado1+15;                 
+                }
+                if (color=="Natural" || color=="Sugar Maple" || color=="Nogal Clasico"
+                        || color=="Roble" || color=="Cappuccino" || color=="Chocolate" || color=="Dark Mahogany" 
+                        || color=="Coffe"){
+                            text2= resultado1+16; 
+                }
+                if(color=="Igualacion"){
+                    text2= resultado1+50; 
+                }
+            }
+            
+            resultado2=(parseFloat(text2)*parseFloat(unidades));
             text3=resultado2;
         }
         $('#precio_shutters').val(parseFloat(text2));

@@ -17,6 +17,21 @@
                 <!-- <div class="form-group">
                 <h3 class="box-title">Cantidad</h3>
                 </div> -->
+                <div class="row">
+                     <div class="col">
+                       <label for="exampleSelect1">De acuerdo a la lista de precios elige el lugar y la instalacion de la persiana:</label>
+                        <select class="form-control select2" id="Inst_Pais" name="Inst_Pais" onchange="calculate();">
+                          <option selected="selected">---</option>
+                          <option value="USA Instalada">USA Instalada</option>
+                          <option value="USA No instalada">USA No instalada</option>
+                          <option value="MX Instalada">MX Instalada </option>
+                          <option value="MX No instalada">MX No instalada</option>
+                          <!-- <option value="Igualacion">Igualacion</option>                           -->
+                        </select>
+                      </div> 
+                    </div>
+
+
                     <div class="row"> 
                     <div class="col">
                       <label for="exampleSelect1">Cantidad:</label>
@@ -78,20 +93,20 @@
                       </div>
                       <div class="col">
                       <label for="exampleSelect1">Color</label>
-                        <select class="form-control select2" id="color_shutters" name="color_shutters">
+                        <select class="form-control select2" id="color_shutters" name="color_shutters" onchange="calculate();">
                           <option selected="selected">---</option>
-                          <option>Picolo</option>
-                          <option>Bolero</option>
-                          <option>Clarinete</option>
-                          <option>Natural</option>
-                          <option>Sugar Maple</option>
-                          <option>Nogal Clasico</option>
-                          <option>Roble</option>
-                          <option>Cappuccino</option>
-                          <option>Chocolate</option>
-                          <option>Dark Mahogany</option>
-                          <option>Coffee</option>
-                          <option>Igualacion</option>
+                          <option value="Picolo">Picolo</option>
+                          <option value="Bolero">Bolero</option>
+                          <option value="Clarinete">Clarinete</option>
+                          <option value="Natural">Natural</option>
+                          <option value="Sugar Maple">Sugar Maple</option>
+                          <option value="Nogal Clasico">Nogal Clasico</option>
+                          <option value="Roble">Roble</option>
+                          <option value="Cappuccino">Cappuccino</option>
+                          <option value="Chocolate">Chocolate</option>
+                          <option value="Dark Mahogany">Dark Mahogany</option>
+                          <option value="Coffee">Coffee</option>
+                          <option value="Igualacion">Igualacion</option>
                         </select>
                       </div> 
                      <div class="col">

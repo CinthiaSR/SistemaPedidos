@@ -544,6 +544,7 @@ class Shutters extends Controllers{
 			}else{ 
 				$id= intval($_POST['id']);
 				$idPedido= intval($_POST['idPE']);
+				$ft2=ucwords(strClean($_POST['txtFt2']));
 				$importe = ucwords(strClean($_POST['txtImporte']));
 				$descuento = ucwords(strClean($_POST['txtdescuento']));
 				$Desc = ucwords(strClean($_POST['txtDesc']));
@@ -563,6 +564,7 @@ class Shutters extends Controllers{
 					$option = 1;
 					if($_SESSION['permisosMod']['w']){
 						$request_user = $this->model->insertPrecios($idPedido,
+																   $ft2,
 																   $importe,
 						                                           $descuento,
 					                                               $Desc,
@@ -693,6 +695,7 @@ class Shutters extends Controllers{
 					}else{ 
 						$id= intval($_POST['id']);
 						$idPedido= intval($_POST['idPE']);
+						$ft2=ucwords(strClean($_POST['txtFt2']));
 						$importe = ucwords(strClean($_POST['txtImporte']));
 						$descuento = ucwords(strClean($_POST['txtdescuento']));
 						$Desc = ucwords(strClean($_POST['txtDesc']));
@@ -713,6 +716,7 @@ class Shutters extends Controllers{
 							if($_SESSION['permisosMod']['u']){
 								$request_user = $this->model->updateprecio($id,
 																			$idPedido,
+																			$ft2,
 																			$importe,
 																			$descuento,
 																			$Desc,

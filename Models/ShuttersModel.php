@@ -456,10 +456,11 @@
 			return $request;
 		}
 
-		public function insertPrecios(string $idpedido, string $importe, string $porcentaje, string $totalpor, string $subtotal, string $instalacion, 
+		public function insertPrecios(string $idpedido, string $txtFt2, string $importe, string $porcentaje, string $totalpor, string $subtotal, string $instalacion, 
 		                              string $percenimp, string $tlimp,string $total,
 		                              string $anticipacion, string $saldo){
 		        $this-> idpedido = $idpedido;
+				$this-> txtFt2=$txtFt2;
 				$this-> importe= $importe;
 				$this-> procentaje= $porcentaje;
 				$this-> totalpor= $totalpor;
@@ -474,9 +475,10 @@
 				
 				if(empty($request))
 				{
-					$query_insert  = "INSERT INTO preciosshutters(idpedido, importe, porcentaje, totalPor, subtotal, instalacion, percenimp, totalimp,total,anticipacion, saldo) 
-									VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+					$query_insert  = "INSERT INTO preciosshutters(idpedido, totalFt2, importe, porcentaje, totalPor, subtotal, instalacion, percenimp, totalimp,total,anticipacion, saldo) 
+									VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 					$arrData = array( $this-> idpedido,
+								    $this-> totalFt2,
 									$this-> importe,
 									$this-> procentaje,
 									$this-> totalpor,
@@ -578,12 +580,13 @@
 
 		}
 
-		public function updateprecio(string $idprecio, string $idpedido, string $importe, string $porcentaje, string $totalpor, string $subtotal, string $instalacion,
+		public function updateprecio(string $idprecio, string $idpedido, string $txtFt2,  string $importe, string $porcentaje, string $totalpor, string $subtotal, string $instalacion,
 		                            string $percenimp, string $tlimp, string $total, string $anticipacion, string $saldo ){
 			
 			
 			$this->intIdPrecio = $idprecio;
 			$this->intIdPedido = $idpedido;
+			$this-> txtFt2=$txtFt2;
 			$this->intImporte= $importe;
 			$this->intPorcentaje= $porcentaje;
 			$this->intTotalpor= $totalpor;
@@ -600,9 +603,10 @@
 
 			if(empty($request))
 			{
-				$sql = "UPDATE preciosshutters SET importe = ?, porcentaje= ?, totalPor = ?,  subtotal= ?, instalacion = ?, percenimp = ?, totalimp = ?, total = ?, anticipacion= ? , saldo= ? 		
+				$sql = "UPDATE preciosshutters SET totalFt2=?, importe = ?, porcentaje= ?, totalPor = ?,  subtotal= ?, instalacion = ?, percenimp = ?, totalimp = ?, total = ?, anticipacion= ? , saldo= ? 		
 				WHERE id = $this->intIdPrecio ";
-				$arrData = array($this->intImporte,
+				$arrData = array($this->txtFt2,
+					            $this->intImporte,
 								$this->intPorcentaje,
 								$this->intTotalpor,
 								$this->intSubtotal,

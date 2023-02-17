@@ -150,14 +150,16 @@
                     <input type="hidden" id="idPE" name="idPE" value="<?= $orden['idpedido'] ?>">
               <input type="hidden" id="id" name="id" value="<?= $precio['id']?>">
                 <tfoot>
+                <tr>
+                        <th colspan="4" class="text-right">Total de ft2: &nbsp; 
+                        <td><input type="text" id="txtFt2" name="txtFt2"  class="form-control"  value="<?= $ft2xPed ?>" readonly>
+                        </td>
+                    </tr>
                     <tr>
-                        <th  class="text-right col-md-10"> <span class="badge badge-info" style="font-size: 18px ;">Total de Ft2: &nbsp; <?= $ft2xPed?> </span></th>
-                        <th colspan="3" class="text-right col-md-10">Importe:</th>
+                        <th colspan="4" class="text-right col-md-10">Importe: &nbsp;</th>
                         <td class="text-right"><input type="text" id="txtImporte" name="txtImporte" class="monto" onkeyup="calculateTotal();" value=" <?=$importe?>" readonly >
                         </td>
                     </tr>
-                    <?php
-                    ?>
                     <tr>
                         <th colspan="4" class="text-right">Distribuidor: &nbsp;
                         <input type="text"    class="monto" id="txtdescuento" name="txtdescuento" onkeyup="calculateTotal();" value="<?= $precio['porcentaje'] ?>"> %

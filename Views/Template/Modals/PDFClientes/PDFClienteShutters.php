@@ -218,6 +218,9 @@
 				<td colspan="2"><strong># Persianas: <?=$subtotal?></strong></td>
 			</tr>
 			<tr>
+				<td colspan="2"><strong>Total de Ft2: <?=$precio['totalFt2']?></strong></td>
+			</tr>
+			<tr>
 			    <!-- <td colspan="2"><strong>Cantidad de persianas: <?=$subtotal ?></strong></td> -->
 				<td colspan="15" class="text-right"><b>Importe:</b> </td>
 				<td class="text-right"><?= SMONEY. $precio['importe'] ?></td>

@@ -212,6 +212,9 @@
 		    <tr>
 				<td colspan="2"><strong># Persianas: <?=$subtotal?></strong></td>
 			</tr>
+			<tr>
+				<td colspan="2"><strong>Total de Ft2: <?=$precio['totalFt2']?></strong></td>
+			</tr>
 		</tfoot>
 	</table>
 	<div class="text-center">
