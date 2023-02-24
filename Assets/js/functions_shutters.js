@@ -239,48 +239,6 @@ function fntDelItem(element){
     }
 }
 
-// ----------------------------------------------------------------------------------------------total y precio x ft2
-
-// function calculate(indicador){
-//     var ancho= document.querySelector('#anc_shutters').value;
-//     var alto = document.querySelector('#alt_shutters').value;
-//     var Med = document.querySelector('#Med_shutters').value;
-//     var precioxft2 = document.querySelector('#idprecio').value;
-  
-
-
-//     text1=0;
-// 	$(".monto").each(function() {
-//         if (isNaN(ancho) || isNaN(alto)) {  
-//             text1=0;
-//           } else {  
-//             var Med = document.getElementById('Med_shutters').value;
-//               if(isNaN(Med)) {
-//                 num1=parseFloat(ancho); 
-//                 num2=parseFloat(alto); 
-//                 suma1=parseFloat(alto)+med;
-//                 suma2=parseFloat(ancho)+med;
-//                 resultado=(parseFloat(suma1)*parseFloat(suma2))/144; 
-//                 text1= resultado;
-//               } 
-              
-//         }
-//         $('#Tft2').val(parseFloat(text1));	
-// 	});
-//     if(text1) {
-//         if(isNaN(text1) || isNaN(precioxft2)){
-//             text2+=0;
-//         }else{
-//             resultado1=(parseFloat(text1)*parseFloat(precioxft2)); 
-//             text2= resultado1; 
-//         }
-//         $('#precio_shutters').val(parseFloat(text2));
-// 	}
-
-
-// }
-
-
 function calculate(){
     const pais= document.querySelector('#Inst_Pais').value;
     const color =document.querySelector('#color_shutters').value;
@@ -483,6 +441,7 @@ function fntViewShutter(idroller){
              if(objData.status)
              {                  
                 document.querySelector('#idShutter').value=objData.data.ID_SHUTTER;
+                document.querySelector('#Inst_Pais').value=objData.data.shut_pais;
                 document.querySelector('#unidades_shutters').value=objData.data.shut_cantidad;
                 document.querySelector('#Iden_shutters').value=objData.data.shut_identificacion;
                 document.querySelector('#anc_shutters').value=objData.data.shut_ancho;
@@ -650,55 +609,6 @@ function editar(idprecio){                                   //EDIT
 
 
 }
-
-// function detail_price(idpedido){
-//     if(document.querySelector("#formPrice")){
-//         let formPrice = document.querySelector("#formPrice");
-//         formPrice.onsubmit = function(e) {
-//             e.preventDefault();
-//             let strPercenDescINP = document.querySelector('#txtdescuento').value;
-//             let strDescuento = document.querySelector('#txtDesc').value;
-//             let strSubtotal = document.querySelector('#txtSubtotal').value;
-//             let strInstalacionINP = document.querySelector('#txtInstall').value;
-//             let strTotal = document.querySelector('#txtTotal').value;
-//             let strAnticipoINP = document.querySelector('#txtAnticipo').value;
-//             let strSaldo = document.querySelector('#txtSaldo').value;
-                    
-
-//             if(strPercenDescINP == '' || strInstalacionINP == '' || strAnticipoINP== '')
-//             {
-//                 swal("Atención", "Todos los campos son." , "error");
-//                 return false;
-//             }
-//             divLoading1.style.display = "flex";
-//             var request = (window.XMLHttpRequest) ? 
-//                           new XMLHttpRequest() : 
-//                           new ActiveXObject('Microsoft.XMLHTTP');
-//             var ajaxUrl = base_url+'/Rollers/setRoller'; 
-//             var formData = new FormData(formRoller);
-//             request.open("POST",ajaxUrl,true);
-//             request.send(formData);
-//             request.onreadystatechange = function(){
-//                 if(request.readyState == 4 && request.status == 200){
-//                     var objData = JSON.parse(request.responseText);
-//                     if(objData.status){
-//                         $('#modalFormShutters').modal("hide");
-//                         formRoller.reset();
-//                         swal("Roller", objData.msg ,"success");
-//                         // tableShutters.api().ajax.reload();
-//                         $("#tableShutters").load(" #tableShutters");
-
-//                     }else{
-//                         swal("Error", objData.msg, "error");
-//                     }
-//                 }
-//                 divLoading1.style.display = "none";
-//                 return false;
-//             }
-//         }
-//     }
-// }
-
 function calculateTotal(){
     var subtotal= document.querySelector('#txtImporte').value;
     var porcentaje = document.querySelector('#txtdescuento').value;

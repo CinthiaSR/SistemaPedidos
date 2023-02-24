@@ -8,11 +8,12 @@
 
 		// --------------------------------------------------------------------------------------------- SENTENCIAS PARA SHUTTERS
 
-		public function insertShutters(string $idpedido, string $cantidad, string $Identificacion, string $Ancho, string $Largo, string $Profundidad, string $Medida,  string $Color, string $Louver,
+		public function insertShutters(string $idpedido, string $Pais, string $cantidad, string $Identificacion, string $Ancho, string $Largo, string $Profundidad, string $Medida,  string $Color, string $Louver,
 									  string $Baston, string $Config, string $portada, string $ruta, string $Poste1, string $Poste2, string $Riel, string $Totalft2, string $Precio,
 									  string $PrecioTotal, string $nota){
 			
 			$this->strPedido = $idpedido;	
+			$this->Pais=$Pais;
 			$this->strCantidad = $cantidad;
 			$this->strIdentificacion = $Identificacion;
 			$this->strAncho = $Ancho;
@@ -43,6 +44,7 @@
 				//  VALUES (8, '1', 2, '3', 'Exacta', 1.00, 3.00, '4', '2.0', 'Blanco', 'Redonda', 'Inoxidable', '8', 'Der/R', 0.00) 
 
 				$query_insert  = "INSERT INTO shutters(idpedido, 
+														shut_pais
 														shut_cantidad,
 				                                        shut_identificacion,
 														shut_ancho,
@@ -63,8 +65,9 @@
 														shut_precio,
 														shut_totalprecio,
 														shut_nota) 
-								  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+								  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	        	$arrData = array(	$this->strPedido,
+									$this->Pais,
 									$this->strCantidad,
 									$this->strIdentificacion,
 									$this->strAncho,
@@ -94,13 +97,14 @@
 	        return $return;
 		}
 
-		public function updateShutters(int $idShutter, string $idpedido, string $cantidad, string $Identificacion, string $Ancho, string $Largo, string $Profundidad, string $Medida, string $Color, string $Louver,
+		public function updateShutters(int $idShutter, string $idpedido, string $Pais, string $cantidad, string $Identificacion, string $Ancho, string $Largo, string $Profundidad, string $Medida, string $Color, string $Louver,
 	    string $Baston, string $Config, string $portada, string $ruta, string $Poste1, string $Poste2, string $Riel, string $Totalft2, string $Precio,
 		string $precioTotal, string $nota){
 	
 			// $this->intStatus = $status;
 			$this->intIdShutter = $idShutter;
 			$this->strPedido = $idpedido;
+			$this->Pais=$Pais;
 			$this->strCantidad = $cantidad;
 			$this->strIdentificacion = $Identificacion;
 			$this->strAncho = $Ancho;
@@ -130,7 +134,8 @@
 
 			if(empty($request))
 			{
-				$sql = "UPDATE shutters SET  shut_cantidad = ?,
+				$sql = "UPDATE shutters SET  shut_pais=?,
+										     shut_cantidad = ?,
 											 shut_identificacion = ?, 
 				                             shut_ancho= ?, 
 											 shut_largo = ?, 											 
@@ -151,6 +156,7 @@
 											 shut_nota=?
 				WHERE ID_SHUTTER = $this->intIdShutter";
 				$arrData = array(
+								$this->Pais,
 					            $this->strCantidad,
 								$this->strIdentificacion,
 								$this->strAncho,
@@ -429,6 +435,7 @@
 
 				$sql_Rollers = "SELECT sh.idpedido,
 									   sh.ID_SHUTTER, 
+									   sh.shut_pais,
 									   sh.shut_cantidad, 
 				                       sh.shut_identificacion, 
 									   sh.shut_nota,
@@ -525,6 +532,7 @@
 
 				$sql_Rollers = "SELECT sh.idpedido,
 									   sh.ID_SHUTTER, 
+									   sh.shut_pais,
 									   sh.shut_cantidad, 
 				                       sh.shut_identificacion, 
 									   sh.shut_ancho,
