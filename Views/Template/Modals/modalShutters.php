@@ -14,12 +14,10 @@
             <div class="tile-body">
               <form id="formShutters" name="formShutters">
                 <!-- --------------------------------------------------DATOS GENERALES -->
-                <!-- <div class="form-group">
-                <h3 class="box-title">Cantidad</h3>
-                </div> -->
+                <label for="exampleSelect1">De acuerdo a la lista de precios por pais, el precio final cambiara de acuerdo al lugar que selecciones</label> 
                 <div class="row">
-                     <div class="col">
-                       <label for="exampleSelect1">De acuerdo a la lista de precios elige el lugar y la instalacion de la persiana:</label>
+                  <div class="col">
+                      <label for="exampleSelect1">Pais: </label>
                         <select class="form-control select2" id="Inst_Pais" name="Inst_Pais" onchange="calculate();">
                           <option selected="selected">---</option>
                           <option value="USA Instalada">USA Instalada</option>
@@ -29,7 +27,26 @@
                           <!-- <option value="Igualacion">Igualacion</option>                           -->
                         </select>
                       </div> 
-                    </div>
+                      <?php
+                       if(empty($data['arrPedido'])){
+                      ?>
+                          <p>Datos no encontrados</p>
+                      <?php
+                      }else{
+                          $orden = $data['arrPedido']['orden'];
+                      ?>
+                      <div class="col">
+                      <input type="hidden" id="idPedidoS" name="idPedidoS" value="<?= $orden['idpedido'] ?>">
+                      <label for="exampleSelect1">Precio Base:</label>
+                      <input type="text" class="form-control" id="idprecio" name="idprecio" value="<?= $orden['precioft2'] ?>" readonly>
+                      </div>
+                      <div class="col">
+                      <label for="exampleSelect1">Precio con complementos:</label>
+                      <input type="text" class="form-control" id="precioComp" name="precioComp" readonly  >
+                      </div>
+                      <?php
+                    } ?>  
+                    </div> <br>
 
 
                     <div class="row"> 
@@ -41,17 +58,7 @@
                       <input type="hidden" id="idShutter" name="idShutter">
                       <input type="hidden" id="foto_actual" name="foto_actual" value="">
                       <input type="hidden" id="foto_remove" name="foto_remove" value="0">
-                    <?php
-                      if(empty($data['arrPedido'])){
-                    ?>
-                    <p>Datos no encontrados</p>
-                    <?php }else{
-                        $orden = $data['arrPedido']['orden'];
-                    ?>
-                      <input type="hidden" id="idPedidoS" name="idPedidoS" value="<?= $orden['idpedido'] ?>">
-                      <input type="hidden" id="idprecio" name="idprecio" value="<?= $orden['precioft2'] ?>">
-                      <?php
-                    } ?>                      
+                                        
                       <label for="exampleSelect1">Identificacion:</label>
                        <input type="text" class="form-control" placeholder="Identificacion" id="Iden_shutters" name="Iden_shutters">
                       </div>  
@@ -121,12 +128,12 @@
                       </div>  
                       <div class="col">
                       <label for="exampleSelect1">Baston</label>
-                        <select class="form-control select2" id="baston_shutters" name="baston_shutters" >
+                        <select class="form-control select2" id="baston_shutters" name="baston_shutters" onchange="calculate();">
                           <option selected="selected">---</option>
-                          <option>Visible</option>
-                          <option>Oculto</option>
-                          <option>Visible (Split/ dividido)</option>
-                          <option>Oculto (Split/ dividido)</option>
+                          <option value="Visible">Visible</option>
+                          <option value="Oculto">Oculto</option>
+                          <option value="Visible (Split/ dividido)">Visible (Split/ dividido)</option>
+                          <option value="Oculto (Split/ dividido)">Oculto (Split/ dividido)</option>
                         </select>
                       </div>
                     </div> <br>

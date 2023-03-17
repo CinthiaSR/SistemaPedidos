@@ -198,6 +198,8 @@ class Shutters extends Controllers{
               
 				$idpedido = intval($_POST['idPedidoS']);
 				$Inst_Pais= ucwords($_POST['Inst_Pais']);
+				$idprecio= ucwords(strClean($_POST['idprecio']));
+				$preComp=ucwords(strClean($_POST['precioComp']));
 				$Cantidad = intval($_POST['unidades_shutters']);
 				$idShutter = intval($_POST['idShutter']);
 				$strIden = strClean($_POST['Iden_shutters']);
@@ -242,6 +244,8 @@ class Shutters extends Controllers{
 						if($_SESSION['permisosMod']['w']){
 							$request_user = $this->model->insertShutters($idpedido,
 																		$Inst_Pais,
+																		$idprecio,
+																		$preComp,
 																		$Cantidad,
 																		$strIden,
 																		$strAncho,
@@ -273,6 +277,8 @@ class Shutters extends Controllers{
 						$request_user = $this->model->updateShutters($idShutter,
 																	$idpedido,
 																	$Inst_Pais,
+																	$idprecio,
+																	$preComp,
 																	$Cantidad,
 																	$strIden,
 																	$strAncho,

@@ -242,6 +242,8 @@ function fntDelItem(element){
 function calculate(){
     const pais= document.querySelector('#Inst_Pais').value;
     const color =document.querySelector('#color_shutters').value;
+    const baston= document.querySelector('#baston_shutters').value;
+    const PrecioComp=document.querySelector('#precioComp').value;
     var ancho= document.querySelector('#anc_shutters').value;
     var alto = document.querySelector('#alt_shutters').value;
     var Med = document.querySelector('#Med_shutters').value;
@@ -305,73 +307,85 @@ function calculate(){
         }
         $('#Tft2').val(parseFloat(ft2xPed));	
 	});
+
+
     if(text1) {
         if(isNaN(text1) || isNaN(precioxft2)|| isNaN(unidades)){
-            text2+=0;
+            text2+=0;            
         }else{
-            resultado1=(parseFloat(text1)*parseFloat(precioxft2)); 
+            // resultado1=(parseFloat(text1)*parseFloat(precioxft2)); 
             if(pais=="USA Instalada"){
                 if (color=="Picolo" || color=="Bolero" || color=="Clarinete"){
-                    text2= resultado1+17.50;                 
+                    text2=(parseFloat(precioxft2)+1.50)                
                 }
                 if (color=="Natural" || color=="Sugar Maple" || color=="Nogal Clasico"
                         || color=="Roble" || color=="Cappuccino" || color=="Chocolate" || color=="Dark Mahogany" 
                         || color=="Coffe"){
-                            text2= resultado1+18.50; 
+                            text2=(parseFloat(precioxft2)+1.50)
                 }
                 if(color=="Igualacion"){
-                    text2= resultado1+80; 
+                    text2= parseFloat(precioxft2)+80; 
                 }
             }
 
             if(pais=="USA No instalada"){
                 if (color=="Picolo" || color=="Bolero" || color=="Clarinete"){
-                    text2= resultado1+16;                 
+                    text2=(parseFloat(precioxft2)+0)                  
                 }
                 if (color=="Natural" || color=="Sugar Maple" || color=="Nogal Clasico"
                         || color=="Roble" || color=="Cappuccino" || color=="Chocolate" || color=="Dark Mahogany" 
                         || color=="Coffe"){
-                            text2= resultado1+17; 
+                            text2=(parseFloat(precioxft2)+0)  
                 }
                 if(color=="Igualacion"){
-                    text2= resultado1+80; 
+                    text2= parseFloat(precioxft2)+80; 
                 }
             }
 
 
             if(pais=="MX Instalada"){
                 if (color=="Picolo" || color=="Bolero" || color=="Clarinete"){
-                    text2= resultado1+16.50;                 
+                    text2= parseFloat(precioxft2)+1.50;                 
                 }
                 if (color=="Natural" || color=="Sugar Maple" || color=="Nogal Clasico"
                         || color=="Roble" || color=="Cappuccino" || color=="Chocolate" || color=="Dark Mahogany" 
                         || color=="Coffe"){
-                            text2= resultado1+17.50; 
+                            text2= parseFloat(precioxft2)+1.50; 
                 }
                 if(color=="Igualacion"){
-                    text2= resultado1+50; 
+                    text2= parseFloat(precioxft2)+50; 
                 }
             }
 
             if(pais=="MX No instalada"){
                 if (color=="Picolo" || color=="Bolero" || color=="Clarinete"){
-                    text2= resultado1+15;                 
+                    text2= parseFloat(precioxft2)+0;                 
                 }
                 if (color=="Natural" || color=="Sugar Maple" || color=="Nogal Clasico"
                         || color=="Roble" || color=="Cappuccino" || color=="Chocolate" || color=="Dark Mahogany" 
                         || color=="Coffe"){
-                            text2= resultado1+16; 
+                            text2= parseFloat(precioxft2)+0; 
                 }
                 if(color=="Igualacion"){
-                    text2= resultado1+50; 
+                    text2= parseFloat(precioxft2)+50; 
                 }
             }
+            if(baston=="Visible"||baston=='Visible (Split/ dividido)'|| baston=='Oculto (Split/ dividido)'){
+                     res= parseFloat(text2)+0;
+            }else if (baston=='Oculto'){
+                res= parseFloat(text2)+1.50; 
+            }
+          
             
-            resultado2=(parseFloat(text2)*parseFloat(unidades));
-            text3=resultado2;
+            resultado2=(parseFloat(ft2xPed)*parseFloat(text2));
+            text3=resultado2
+            resultado3=(parseFloat(text3)*parseFloat(unidades));
+            text4=resultado3;
         }
-        $('#precio_shutters').val(parseFloat(text2));
-        $('#precio_total').val(parseFloat(text3));
+        
+        $('#precioComp').val(parseFloat(res));
+        $('#precio_shutters').val(parseFloat(text3));
+        $('#precio_total').val(parseFloat(text4));
 	}
 
 
@@ -442,6 +456,8 @@ function fntViewShutter(idroller){
              {                  
                 document.querySelector('#idShutter').value=objData.data.ID_SHUTTER;
                 document.querySelector('#Inst_Pais').value=objData.data.shut_pais;
+                document.querySelector('#idprecio').value=objData.data.shut_preBase;
+                document.querySelector('#precioComp').value=objData.data.shut_preComp;
                 document.querySelector('#unidades_shutters').value=objData.data.shut_cantidad;
                 document.querySelector('#Iden_shutters').value=objData.data.shut_identificacion;
                 document.querySelector('#anc_shutters').value=objData.data.shut_ancho;
